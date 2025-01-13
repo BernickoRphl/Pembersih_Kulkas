@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pembersih_kulkas/view/dashboard_view.dart';
 import 'package:pembersih_kulkas/view/profile_view.dart';
 
 class AuthService {
@@ -28,10 +29,10 @@ class AuthService {
         throw Exception("User data not found in Firestore.");
       }
 
-      // Navigate to ProfilePage
+      // Navigate to DashboardView
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ProfilePage()),
+        MaterialPageRoute(builder: (context) => const DashboardView()),
       );
 
       // Show success message
@@ -108,10 +109,10 @@ class AuthService {
         const SnackBar(content: Text("Account created successfully!")),
       );
 
-      // Navigate to ProfilePage
+      // Navigate to DashboardView
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ProfilePage()),
+        MaterialPageRoute(builder: (context) => const DashboardView()),
       );
     } on FirebaseAuthException catch (e) {
       String errorMessage;

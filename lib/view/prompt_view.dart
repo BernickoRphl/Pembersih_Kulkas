@@ -21,9 +21,6 @@ class _PromptViewState extends State<PromptView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Masukkan Bahan-Bahan'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -33,7 +30,7 @@ class _PromptViewState extends State<PromptView> {
               TextFormField(
                 controller: _ingredientsController,
                 decoration: const InputDecoration(
-                  labelText: 'Bahan-bahan (pisahkan dengan koma)',
+                  labelText: 'Masukkan bahan (pisahkan dengan koma)',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
