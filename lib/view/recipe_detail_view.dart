@@ -16,133 +16,88 @@ class RecipeDetailView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(recipe['title'] ?? 'Detail Resep'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.popUntil(
+              context,
+              (route) => route.settings.name == '/',
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar Resep
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                recipe['image'] ?? 'https://via.placeholder.com/150',
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 200,
-              ),
+            Image.network(
+              recipe['image'] ?? 'https://via.placeholder.com/150',
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: 200,
             ),
-            const SizedBox(height: 16),
-
-            // Judul Resep
+            SizedBox(height: 16),
             Text(
               recipe['title'] ?? 'No Title',
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
               ),
             ),
-            const SizedBox(height: 8),
-
-            // Waktu Persiapan
-            Chip(
-              label: Text(
-                'Ready in ${recipe['readyInMinutes']} minutes',
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              backgroundColor: Colors.blue,
-            ),
-            const SizedBox(height: 16),
-
-            // Summary
-            Card(
-              elevation: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Summary:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      removeHtmlTags(recipe['summary'] ?? 'No summary available.'),
-                      style: const TextStyle(fontSize: 16),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
-                ),
+            SizedBox(height: 8),
+            Text(
+              'Ready in ${recipe['readyInMinutes']} minutes',
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 16,
               ),
             ),
-            const SizedBox(height: 16),
-
-            // Ingredients
-            Card(
-              elevation: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Ingredients:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: (recipe['extendedIngredients'] as List<dynamic>?)
-                              ?.map((ingredient) => Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                                    child: Text(
-                                      '- ${ingredient['original']}',
-                                      style: const TextStyle(fontSize: 16),
-                                    ),
-                                  ))
-                              .toList() ??
-                          [const Text('No ingredients available.')],
-                    ),
-                  ],
-                ),
+            SizedBox(height: 16),
+            Text(
+              'Summary:',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
             ),
-            const SizedBox(height: 16),
-
-            // Instructions
-            Card(
-              elevation: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Instructions:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      removeHtmlTags(
-                          recipe['instructions'] ?? 'No instructions available.'),
-                      style: const TextStyle(fontSize: 16),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
-                ),
+            SizedBox(height: 8),
+            Text(
+              removeHtmlTags(recipe['summary'] ?? 'No summary available.'),
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Ingredients:',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
+            ),
+            SizedBox(height: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: (recipe['extendedIngredients'] as List<dynamic>?)
+                      ?.map((ingredient) => Text(
+                            '- ${ingredient['original']}',
+                            style: TextStyle(fontSize: 16),
+                          ))
+                      .toList() ??
+                  [Text('No ingredients available.')],
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Instructions:',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              removeHtmlTags(
+                  recipe['instructions'] ?? 'No instructions available.'),
+              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
