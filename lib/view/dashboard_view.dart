@@ -14,7 +14,7 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  int _selectedIndex = 0; // Indeks untuk BottomNavigationBar
+  int _selectedIndex = 0;
 
   // Daftar halaman yang akan ditampilkan
   final List<Widget> _pages = [
@@ -23,7 +23,6 @@ class _DashboardViewState extends State<DashboardView> {
     ProfilePage(), // Halaman Profile
   ];
 
-  // Fungsi untuk mengubah halaman saat BottomNavigationBar diklik
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -35,13 +34,13 @@ class _DashboardViewState extends State<DashboardView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Resep Makanan Hari Ini',
+          '',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue, // Warna biru untuk AppBar
+        backgroundColor: Colors.blue,
         elevation: 4,
       ),
-      body: _pages[_selectedIndex], // Tampilkan halaman sesuai indeks
+      body: _pages[_selectedIndex], 
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -59,7 +58,7 @@ class _DashboardViewState extends State<DashboardView> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
-        onTap: _onItemTapped, // Panggil fungsi saat item diklik
+        onTap: _onItemTapped, 
       ),
     );
   }
@@ -82,7 +81,6 @@ class _RecipeGridState extends State<RecipeGrid> {
 
   Future<void> _fetchRecipes() async {
     try {
-      // Ganti dengan endpoint API backend Anda
       final response = await http.get(
         Uri.parse('http://10.0.2.2:8000/recipes'),
       );
