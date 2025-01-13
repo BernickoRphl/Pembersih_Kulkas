@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 
 void main() {
   runApp(const MyApp());
@@ -120,6 +121,33 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+=======
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pembersih_kulkas/view/dashboard_view.dart';
+import 'package:pembersih_kulkas/view/login_view.dart';
+import 'package:pembersih_kulkas/view/prompt_view.dart';
+import 'package:pembersih_kulkas/view/signup_view.dart';
+import 'package:pembersih_kulkas/view/splash_view.dart';
+
+void enablePlatformOverrideForDesktop() {
+  if (!kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux)) {
+    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  }
+}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Pastikan binding diinisialisasi
+  await Firebase.initializeApp(); // Inisialisasi Firebase
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Firebase App',
+      home: SplashView(), // Ganti dengan halaman utama Anda
+>>>>>>> Stashed changes
     );
   }
 }
