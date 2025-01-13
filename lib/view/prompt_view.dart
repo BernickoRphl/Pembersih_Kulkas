@@ -47,11 +47,10 @@ class _PromptViewState extends State<PromptView> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Navigasi ke halaman RecipePage dengan membawa bahan-bahan
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RecipePage(
+                        builder: (context) => RecipeView(
                           ingredients: _ingredientsController.text,
                         ),
                       ),

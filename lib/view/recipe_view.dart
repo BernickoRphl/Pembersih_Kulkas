@@ -4,16 +4,16 @@ import 'dart:convert';
 
 import 'package:pembersih_kulkas/view/prompt_view.dart';
 
-class RecipePage extends StatefulWidget {
+class RecipeView extends StatefulWidget {
   final String ingredients;
 
-  const RecipePage({super.key, required this.ingredients});
+  const RecipeView({super.key, required this.ingredients});
 
   @override
-  State<RecipePage> createState() => _RecipePageState();
+  State<RecipeView> createState() => _RecipeViewState();
 }
 
-class _RecipePageState extends State<RecipePage> {
+class _RecipeViewState extends State<RecipeView> {
   String _recipe = '';
   bool _isLoading = true;
 
@@ -83,41 +83,46 @@ class _RecipePageState extends State<RecipePage> {
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    _recipe,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          // Kembali ke halaman PromptPage
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PromptView(),
-                            ),
-                          );
-                        },
-                        child: const Text('Prompt Kembali'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Kembali ke halaman Home (misalnya, halaman utama aplikasi)
-                          Navigator.popUntil(context, (route) => route.isFirst);
-                        },
-                        child: const Text('Kembali ke Home'),
-                      ),
-                    ],
-                  ),
-                ],
+          : SingleChildScrollView(
+              // Tambahkan SingleChildScrollView untuk mengatasi overflow
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _recipe,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            // Kembali ke halaman PromptPage
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const PromptView(),
+                              ),
+                            );
+                          },
+                          child: const Text('Prompt Kembali'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Kembali ke halaman Home (misalnya, halaman utama aplikasi)
+                            Navigator.popUntil(
+                                context, (route) => route.isFirst);
+                          },
+                          child: const Text('Kembali ke Home'),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 40)
+                  ],
+                ),
               ),
             ),
     );
