@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "862428239684",
+    "firebase_url": "https://pembersihkulkas-6f959-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "pembersihkulkas-6f959",
+    "storage_bucket": "pembersihkulkas-6f959.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862428239684:android:62968b409d69218feea911",
+        "android_client_info": {
+          "package_name": "com.pembersihkulkas.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862428239684-c7p49aei0qnh2b5o53jb0u6qhbvra9fu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pembersihkulkas.app",
+            "certificate_hash": "a721105a4f322e58e30d1b0eb74e5abab4232348"
+          }
+        },
+        {
+          "client_id": "862428239684-bnf478aivv1r2m8akrr5df888iub0g0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWPoGvdSL0lVJ3bjnreLrXpA6ENBiYQDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862428239684-bnf478aivv1r2m8akrr5df888iub0g0i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "862428239684-f9jhtaajctnhf138idev76m9ljngi04o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pembersihKulkas"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862428239684:android:61654ec598b60135eea911",
+        "android_client_info": {
+          "package_name": "com.styxl.pembersih_kulkas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862428239684-bnf478aivv1r2m8akrr5df888iub0g0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWPoGvdSL0lVJ3bjnreLrXpA6ENBiYQDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862428239684-bnf478aivv1r2m8akrr5df888iub0g0i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "862428239684-f9jhtaajctnhf138idev76m9ljngi04o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pembersihKulkas"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
