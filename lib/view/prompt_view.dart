@@ -34,7 +34,7 @@ class _PromptViewState extends State<PromptView> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent,
+                  color: Color(0xFF9FC5B2),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -54,14 +54,14 @@ class _PromptViewState extends State<PromptView> {
                 controller: _ingredientsController,
                 decoration: InputDecoration(
                   labelText: 'Contoh: Telur, Tepung, Gula',
-                  labelStyle: const TextStyle(color: Colors.blueAccent),
+                  labelStyle: const TextStyle(color: Color(0xFF9FC5B2),),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.blueAccent),
+                    borderSide: const BorderSide(color: Color(0xFF9FC5B2),),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.blueAccent),
+                    borderSide: const BorderSide(color: Color(0xFF9FC5B2),),
                   ),
                   contentPadding: const EdgeInsets.symmetric(
                     vertical: 15,
@@ -93,7 +93,7 @@ class _PromptViewState extends State<PromptView> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Color(0xFF9FC5B2),
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),

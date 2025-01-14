@@ -17,7 +17,7 @@ class RecipeDetailView extends StatelessWidget {
       appBar: AppBar(
         title: Text(recipe['title'] ?? 'Detail Resep'),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color(0xFF9FC5B2),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

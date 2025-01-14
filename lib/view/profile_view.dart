@@ -50,108 +50,148 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100], // Light grey background
-      appBar: AppBar(
-        automaticallyImplyLeading: false, // Menghilangkan tombol back
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-            fontFamily: 'BalooChettan2',
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: Colors.grey[100],
+    appBar: AppBar(
+      automaticallyImplyLeading: false, // Menghilangkan tombol back
+      backgroundColor: Colors.white,
+      elevation: 0,
+      centerTitle: true,
+      title: const Text(
+        'Profile',
+        style: TextStyle(
+          fontFamily: 'BalooChettan2',
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
         ),
       ),
-      body: SafeArea(
-        child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // User Information Card
-                      Card(
-                        elevation: 2,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'User Information',
-                                style: TextStyle(
-                                  fontFamily: 'BalooChettan2',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
+    ),
+    body: SafeArea(
+      child: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // User Information Card
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'User Information',
+                              style: TextStyle(
+                                fontFamily: 'BalooChettan2',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
-                              const SizedBox(height: 10),
-                              _buildInfoRow('Username', username),
-                              _buildInfoRow('Email', email),
-                            ],
-                          ),
+                            ),
+                            const SizedBox(height: 10),
+                            _buildInfoRow('Username', username),
+                            _buildInfoRow('Email', email),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                    ),
+                    const SizedBox(height: 20),
 
-                      // Recipe History Card
-                      Card(
-                        elevation: 2,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                    // Recipe History Card
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Recipe History',
+                              style: TextStyle(
+                                fontFamily: 'BalooChettan2',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            history.isEmpty
+                                ? Text(
+                                    'No recipes available',
+                                    style: const TextStyle(
+                                      fontFamily: 'BalooChettan2',
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
+                                  )
+                                : Column(
+                                    children: history
+                                        .map((item) => _buildRecipeItem(item))
+                                        .toList(),
+                                  ),
+                          ],
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Recipe History',
-                                style: TextStyle(
-                                  fontFamily: 'BalooChettan2',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Sign Out Button
+                    Center(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        onPressed: () async {
+                          try {
+                            await FirebaseAuth.instance.signOut();
+                            Navigator.popUntil(
+                              context,
+                              (route) => route.isFirst,
+                            );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Failed to sign out: ${e.toString()}",
                                 ),
                               ),
-                              const SizedBox(height: 10),
-                              history.isEmpty
-                                  ? Text(
-                                      'No recipes available',
-                                      style: const TextStyle(
-                                        fontFamily: 'BalooChettan2',
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    )
-                                  : Column(
-                                      children: history
-                                          .map((item) => _buildRecipeItem(item))
-                                          .toList(),
-                                    ),
-                            ],
+                            );
+                          }
+                        },
+                        child: const Text(
+                          'Sign Out',
+                          style: TextStyle(
+                            fontFamily: 'BalooChettan2',
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-      ),
-    );
-  }
+            ),
+    ),
+  );
+}
+
 
   Widget _buildInfoRow(String label, String value) {
     return Padding(

@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.blue.shade300, Colors.blue.shade900],
+                  colors: [Color(0xFF9FC5B2).withOpacity(0.8), Color(0xFF9FC5B2)],
                 ),
               ),
             ),
@@ -199,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               "Masuk",
                               style: TextStyle(
-                                color: Colors.blue.shade900,
+                                color: Color(0xFF9FC5B2),
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),

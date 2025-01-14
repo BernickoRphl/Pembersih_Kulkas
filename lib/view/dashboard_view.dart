@@ -49,27 +49,27 @@ class _DashboardViewState extends State<DashboardView> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF9FC5B2),
         elevation: 4,
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.blue),
+            icon: Icon(Icons.home, color: Color(0xFF9FC5B2)),
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add, color: Colors.blue),
+            icon: Icon(Icons.add, color: Color(0xFF9FC5B2)),
             label: 'Buat Resep',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.blue),
+            icon: Icon(Icons.person, color: Color(0xFF9FC5B2)),
             label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF9FC5B2),
         onTap: _onItemTapped,
       ),
     );
@@ -128,7 +128,6 @@ class _RecipeGridState extends State<RecipeGrid> {
 
   Future<Map<String, dynamic>> _fetchRecipeDetail(int id) async {
     try {
-      // Ganti dengan endpoint API backend Anda untuk mengambil detail resep
       final response = await http.get(
         Uri.parse('http://10.0.2.2:8000/recipes/$id'),
       );
@@ -152,7 +151,7 @@ class _RecipeGridState extends State<RecipeGrid> {
   @override
   Widget build(BuildContext context) {
     return _isLoading
-        ? Center(child: CircularProgressIndicator(color: Colors.blue))
+        ? Center(child: CircularProgressIndicator(color: Color(0xFF9FC5B2)))
         : recipes.isEmpty
             ? Center(child: Text('Tidak ada resep yang ditemukan.'))
             : Padding(
@@ -174,11 +173,9 @@ class _RecipeGridState extends State<RecipeGrid> {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(8),
                         onTap: () async {
-                          // Ambil detail resep berdasarkan ID
                           try {
                             final recipeDetail =
                                 await _fetchRecipeDetail(recipe['id']);
-                            // Navigasi ke halaman detail resep
                             Navigator.push(
                               context,
                               MaterialPageRoute(
