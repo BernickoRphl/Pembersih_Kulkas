@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pembersih Kulkas',
       home: SplashView(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

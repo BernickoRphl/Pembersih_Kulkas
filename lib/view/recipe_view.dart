@@ -158,6 +158,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pembersih_kulkas/view/dashboard_view.dart';
 import 'package:pembersih_kulkas/view/prompt_view.dart';
 
 class RecipeView extends StatefulWidget {
@@ -262,7 +263,8 @@ class _RecipeViewState extends State<RecipeView> {
               child: CircularProgressIndicator(color: Color(0xFF9FC5B2)),
             )
           : Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -324,7 +326,14 @@ class _RecipeViewState extends State<RecipeView> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.popUntil(context, (route) => route.isFirst);
+                          // Navigate to DashboardView
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const DashboardView(), // Ganti dengan DashboardView Anda
+                            ),
+                          );
                         },
                         child: const Text(
                           'Kembali ke Home',
