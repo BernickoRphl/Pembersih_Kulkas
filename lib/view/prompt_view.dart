@@ -28,7 +28,6 @@ class _PromptViewState extends State<PromptView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Judul Input
               const Text(
                 'Masukkan Bahan-bahan Anda',
                 style: TextStyle(
@@ -49,7 +48,6 @@ class _PromptViewState extends State<PromptView> {
               ),
               const SizedBox(height: 20),
 
-              // Input Field
               TextFormField(
                 controller: _ingredientsController,
                 decoration: InputDecoration(
@@ -78,7 +76,6 @@ class _PromptViewState extends State<PromptView> {
               ),
               const SizedBox(height: 30),
 
-              // Tombol Buat Resep
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -110,7 +107,6 @@ class _PromptViewState extends State<PromptView> {
               ),
               const SizedBox(height: 20),
 
-              // Opsi Alternatif
               const SizedBox(height: 20),
             ],
           ),

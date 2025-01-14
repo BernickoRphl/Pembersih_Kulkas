@@ -38,7 +38,6 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background with a gradient
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
@@ -55,7 +54,6 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(
               padding: EdgeInsets.all(20.0),
               children: [
-                // Logo replaced with an icon
                 Center(
                   child: Icon(
                     Icons.account_circle,
@@ -65,7 +63,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
 
-                // Title
                 Text(
                   "Masuk",
                   style: TextStyle(
@@ -85,7 +82,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 30),
 
-                // Profile Form
                 Form(
                   key: _loginKey,
                   child: Column(
@@ -93,7 +89,6 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       SizedBox(height: 10),
 
-                      // Email
                       Container(
                         padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                         height: 80,
@@ -133,7 +128,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 20),
 
-                      // Password Field
                       Container(
                         padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                         height: 80,
