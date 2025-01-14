@@ -36,14 +36,13 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    // Auto-navigate setelah 3 detik di halaman terakhir
     if (_currentPage == _pages.length - 1) {
       Future.delayed(const Duration(seconds: 3), () {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) =>
-                const WelcomeView(), // Navigasi ke WelcomeView
+                const WelcomeView(), 
           ),
         );
       });
@@ -55,7 +54,6 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Stack(
         children: [
-          // PageView untuk menampilkan halaman splash
           PageView(
             controller: _pageController,
             onPageChanged: (int page) {
@@ -71,7 +69,6 @@ class _SplashViewState extends State<SplashView> {
               );
             }).toList(),
           ),
-          // Indicator untuk menunjukkan halaman aktif
           Positioned(
             bottom: 100,
             left: 0,
@@ -81,21 +78,20 @@ class _SplashViewState extends State<SplashView> {
               children: List.generate(
                 _pages.length,
                 (index) => Container(
-                  width: 10, // Ubah ukuran lingkaran
+                  width: 10, 
                   height: 10,
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 6), // Ubah margin
+                      const EdgeInsets.symmetric(horizontal: 6), 
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentPage == index
                         ? Colors.blue
-                        : Colors.grey.withOpacity(0.5), // Ubah warna
+                        : Colors.grey.withOpacity(0.5), 
                   ),
                 ),
               ),
             ),
           ),
-          // Tombol "Lewati" di pojok kanan atas
           if (_currentPage != _pages.length - 1)
             Positioned(
               top: 50,
@@ -107,9 +103,9 @@ class _SplashViewState extends State<SplashView> {
                 child: const Text(
                   'Lewati',
                   style: TextStyle(
-                    color: Colors.blue, // Ubah warna teks
+                    color: Colors.blue, 
                     fontSize: 16,
-                    fontWeight: FontWeight.bold, // Tambahkan bold
+                    fontWeight: FontWeight.bold, 
                   ),
                 ),
               ),
@@ -162,7 +158,7 @@ class SplashPage extends StatelessWidget {
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.white, // Warna teks putih
+              color: Colors.white, 
             ),
             textAlign: TextAlign.center,
           ),
@@ -171,7 +167,7 @@ class SplashPage extends StatelessWidget {
             description,
             style: const TextStyle(
               fontSize: 16,
-              color: Color(0xCCFFFFFF), // 80% opacity putih
+              color: Color(0xCCFFFFFF), 
             ),
             textAlign: TextAlign.center,
           ),
@@ -187,14 +183,14 @@ class SplashPage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white, // Warna tombol putih
+                backgroundColor: Colors.white, 
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
               ),
               child: Text(
                 'Daftar Sekarang',
                 style: TextStyle(
                   fontSize: 16,
-                  color: const Color(0xFFB7D7C8), // Warna teks tombol sesuai background
+                  color: const Color(0xFFB7D7C8), 
                 ),
               ),
             ),

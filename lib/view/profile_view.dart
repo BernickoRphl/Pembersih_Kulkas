@@ -54,7 +54,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(
-      automaticallyImplyLeading: false, // Menghilangkan tombol back
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
       elevation: 0,
       centerTitle: true,
@@ -77,7 +77,6 @@ Widget build(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // User Information Card
                     Card(
                       elevation: 2,
                       shape: RoundedRectangleBorder(
@@ -106,7 +105,6 @@ Widget build(BuildContext context) {
                     ),
                     const SizedBox(height: 20),
 
-                    // Recipe History Card
                     Card(
                       elevation: 2,
                       shape: RoundedRectangleBorder(
@@ -147,7 +145,6 @@ Widget build(BuildContext context) {
                     ),
                     const SizedBox(height: 20),
 
-                    // Sign Out Button
                     Center(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(

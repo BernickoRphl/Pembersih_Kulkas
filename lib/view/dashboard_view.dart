@@ -16,18 +16,16 @@ class DashboardView extends StatefulWidget {
 class _DashboardViewState extends State<DashboardView> {
   int _selectedIndex = 0;
 
-  // Daftar halaman yang akan ditampilkan
   final List<Widget> _pages = [
-    RecipeGrid(), // Halaman Beranda
-    PromptView(), // Halaman Buat Resep
-    ProfilePage(), // Halaman Profile
+    RecipeGrid(), 
+    PromptView(), 
+    ProfilePage(), 
   ];
 
-  // Daftar judul AppBar untuk setiap halaman
   final List<String> _appBarTitles = [
-    'List Resep', // Judul untuk Beranda
-    'Buat Resep Baru', // Judul untuk Buat Resep
-    'Profil Saya', // Judul untuk Profile
+    'List Resep', 
+    'Buat Resep Baru', 
+    'Profil Saya', 
   ];
 
   void _onItemTapped(int index) {
@@ -40,9 +38,9 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // Menghilangkan tombol back
+        automaticallyImplyLeading: false,
         title: Text(
-          _appBarTitles[_selectedIndex], // Judul AppBar dinamis
+          _appBarTitles[_selectedIndex], 
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -106,7 +104,7 @@ class _RecipeGridState extends State<RecipeGrid> {
 
         setState(() {
           recipes =
-              List<Map<String, dynamic>>.from(data); // Parsing array resep
+              List<Map<String, dynamic>>.from(data);
           _isLoading = false;
         });
       } else {
@@ -138,7 +136,7 @@ class _RecipeGridState extends State<RecipeGrid> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         print('Parsed detail data: $data');
-        return data; // Kembalikan data detail resep
+        return data; 
       } else {
         throw Exception('Failed to load recipe detail: ${response.statusCode}');
       }

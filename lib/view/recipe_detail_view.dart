@@ -5,7 +5,6 @@ class RecipeDetailView extends StatelessWidget {
 
   const RecipeDetailView({super.key, required this.recipe});
 
-  // Fungsi untuk menghapus tag HTML
   String removeHtmlTags(String htmlText) {
     RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
     return htmlText.replaceAll(exp, '');
@@ -24,7 +23,6 @@ class RecipeDetailView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar dengan border dan shadow
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade300, width: 2),
@@ -49,7 +47,6 @@ class RecipeDetailView extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Judul
             Text(
               recipe['title'] ?? 'No Title',
               style: TextStyle(
@@ -61,7 +58,6 @@ class RecipeDetailView extends StatelessWidget {
             ),
             SizedBox(height: 8),
 
-            // Informasi waktu
             Text(
               'Ready in ${recipe['readyInMinutes']} minutes',
               style: TextStyle(
@@ -73,10 +69,8 @@ class RecipeDetailView extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Divider untuk memisahkan bagian
             Divider(color: Colors.grey.shade400, thickness: 1),
 
-            // Summary
             Text(
               'Summary:',
               style: TextStyle(
@@ -95,7 +89,6 @@ class RecipeDetailView extends StatelessWidget {
 
             Divider(color: Colors.grey.shade400, thickness: 1),
 
-            // Ingredients
             Text(
               'Ingredients:',
               style: TextStyle(
@@ -120,7 +113,6 @@ class RecipeDetailView extends StatelessWidget {
 
             Divider(color: Colors.grey.shade400, thickness: 1),
 
-            // Instructions
             Text(
               'Instructions:',
               style: TextStyle(
