@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pembersih_kulkas/view/login_view.dart';
 import 'package:pembersih_kulkas/view/profile_view.dart';
 
 class SignupPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SignupPageState extends State<SignupPage> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                const ProfilePage(), // Navigate to ProfilePage
+                const LoginPage(), // Navigate to ProfilePage
           ),
         );
       } catch (e) {
@@ -68,7 +69,7 @@ class _SignupPageState extends State<SignupPage> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.blue.shade300, Colors.blue.shade900],
+                  colors: [Color(0xFF9FC5B2).withOpacity(0.8), Color(0xFF9FC5B2)],
                 ),
               ),
             ),
@@ -262,7 +263,7 @@ class _SignupPageState extends State<SignupPage> {
                             child: Text(
                               "Daftar",
                               style: TextStyle(
-                                color: Colors.blue.shade900,
+                                color: Color(0xFF9FC5B2),
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),

@@ -23,6 +23,13 @@ class _DashboardViewState extends State<DashboardView> {
     ProfilePage(), // Halaman Profile
   ];
 
+  // Daftar judul AppBar untuk setiap halaman
+  final List<String> _appBarTitles = [
+    'List Resep', // Judul untuk Beranda
+    'Buat Resep Baru', // Judul untuk Buat Resep
+    'Profil Saya', // Judul untuk Profile
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -30,19 +37,22 @@ class _DashboardViewState extends State<DashboardView> {
   }
 
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false, // Menghilangkan tombol back
+        automaticallyImplyLeading: false, // Menghilangkan tombol back
         title: Text(
-          '',
-          style: TextStyle(color: Colors.white),
+          _appBarTitles[_selectedIndex], // Judul AppBar dinamis
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Colors.blue,
         elevation: 4,
       ),
-      body: _pages[_selectedIndex], 
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -60,7 +70,7 @@ class _DashboardViewState extends State<DashboardView> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
-        onTap: _onItemTapped, 
+        onTap: _onItemTapped,
       ),
     );
   }
